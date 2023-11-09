@@ -6,7 +6,7 @@
                 <h1 class="display-4 fw-bold">Nuestros Trabajos Realizados</h1>
                 <p class="lead fw-semibold">Donde la elegancia y el diseño se encuentran.</p>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                     <button class="btn btn-lg btn-success" type="submit">Buscar</button>
                 </form>
             </div>
@@ -20,7 +20,7 @@
                         <img src="{{ Storage::url($product->image->url) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('products.show', $product) }}">
                                     {{ $product->product_name }}
                                 </a>
                             </h5>
@@ -29,7 +29,8 @@
                         <div class="card-footer">
                             @foreach ($product->materials as $material)
                                 <div class="d-inline">
-                                    <a href="#" class="nav-link badge text-bg-{{ $material->material_color }}">
+                                    <a href="{{ route('products.material', $material) }}"
+                                        class="nav-link badge text-bg-{{ $material->material_color }}">
                                         {{ $material->material_name }}
                                     </a>
                                 </div>
@@ -41,17 +42,9 @@
         </div>
         <hr>
         <div class="row">
-            <ul class="pagination pagination-sm justify-content-end">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
+            <div class="pagination justify-content-end">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
 </x-app-layout>

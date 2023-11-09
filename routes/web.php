@@ -18,7 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products.index', [ProductController::class, 'index'])->name('products.index');
+Route::get('products.index', [ProductController::class, 'index'])->name('products.index');
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('category/{category}', [ProductController::class, 'category'])->name('products.category');
+Route::get('material/{material}', [ProductController::class, 'material'])->name('products.material');
 
 Route::middleware([
     'auth:sanctum',
