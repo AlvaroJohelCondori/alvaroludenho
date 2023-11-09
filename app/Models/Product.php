@@ -30,6 +30,6 @@ class Product extends Model
     // Relación polimórfica uno a uno
     public function image()
     {
-        return $this->morphOne(Image::class, 'imageable_id');
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

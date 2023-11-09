@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('material_name');
             $table->string('material_slug');
             $table->text('material_description');
+            $table->string('material_color');
             $table->timestamps();
         });
     }

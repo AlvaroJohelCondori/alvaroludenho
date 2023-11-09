@@ -22,6 +22,13 @@ class MaterialFactory extends Factory
             'material_name' => $material_name,
             'material_slug' => Str::slug($material_name),
             'material_description' => $this->faker->text(100),
+            'material_color' => $this->faker->randomElement([
+                'primary',
+                'success',
+                'danger',
+                'warning',
+                'info',
+            ]),
         ];
     }
 }
